@@ -1,0 +1,39 @@
+# Question 1
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+set.seed(10)
+x_vals <- c(3.91, 4.85, 2.28, 4.06, 3.70, 4.04, 5.46, 3.53, 2.28, 1.96, 2.53, 3.88, 2.22, 3.47, 4.82, 2.46, 2.99, 2.54, 0.52, 2.50)
+
+theta <- runif(1000, min = -pi, max = pi, replace=FALSE)
+
+for (i in 1:1000){
+y_vals[i] <- sum(log(1-cos(x_vals - theta[i]))-log(2*pi)) # log likelihood is the sum of logs of the density function for each value of theta
+}
+
+df <- data.frame(y=y_vals, theta = theta)
+
+ggplot(df, aes(x=theta, y=y)) +
+  geom_line()
+```
+
+```{r}
+set.seed(10)
+x_vals <- c(3.91, 4.85, 2.28, 4.06, 3.70, 4.04, 5.46, 3.53, 2.28, 1.96, 2.53, 3.88, 2.22, 3.47, 4.82, 2.46, 2.99, 2.54, 0.52, 2.50)
+
+theta <- runif(1000, min = -pi, max = pi)
+
+l_function <- function (x, theta){
+  loglik <- sum(log(1-cos(x - theta))-log(2*pi))
+}
+
+y_vals <- sapply(theta, l_function, x=x_vals) # sapply takes one value from the theta vector and puts it in l_function, we can specify the value for the second parameter to be fixed on the x_vals vector
+df <- data.frame(y=y_vals, theta = theta)
+
+ggplot(df, aes(x=theta, y=y)) +
+  geom_line()
+```

@@ -1,0 +1,38 @@
+# Question 3
+
+```{r}
+# Can set d (dimensions) to be anything
+d_sphere <- 2
+
+x_matrix <- matrix(1:200, ncol=1)
+for (i in 1:d_sphere){
+  x_matrix <- cbind(x_matrix, rnorm(200, mean=0, sd=1))
+}
+x_matrix <- x_matrix[,-1]
+
+norm_x_list<- list()
+for (i in 1:d_sphere){
+  norm_x_list[[i]] <- x_matrix[, i]/((t(x_matrix[, i])%*% x_matrix[, i])^(0.5))
+}
+
+u_vectors <- list()
+for(i in 1:d_sphere){
+  u_vectors[[i]] <- norm_x_list[[i]]/((sum(norm_x_list[[i]]^2))^(0.5))
+}
+
+two_dimensions <- data.frame(U1= norm_x_list[[1]], U2=norm_x_[[2]])
+
+ggplot(two_dimensions, aes(x=U1, y=U2))+
+  geom_point()
+```
+
+```{r}
+d_sphere <- 2
+x_matrix <- matrix(rnorm(400, mean=0, sd =1), ncol=2, nrow=200)
+denominators <- sqrt(rowSums(x_matrix^2))
+u_vectors <- x_matrix/denominators # x_matrix[i][j] / denominator[i] (don't need a for loop)
+
+df <- data.frame(x = u_vectors[,1], y= u_vectors[,2])
+ggplot(df, aes(x=x, y=y))+
+  geom_point()
+```

@@ -1,0 +1,41 @@
+# Question 2
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+```{r}
+set.seed(10)
+theta <- 0.75
+rand <- runif(5000, min=0, max = 1)
+
+weighted_func <- c()
+for(i in 1:5000){
+weighted_func[i] <- if(rand[i]<0.75){rnorm(1, mean =0, sd = 1)} else {rnorm(1, mean = 3, sd = 1)}
+}
+df <- data.frame(y= weighted_func)
+
+ggplot(df, aes(x=y))+
+  geom_histogram(aes(y = ..density..), color = "black", binwidth = 0.5) +  
+  geom_density(color = "red", size = 1.2) 
+
+
+```
+
+```{r}
+set.seed(10)
+theta <- 0.75
+rand <- runif(5000, min=0, max = 1)
+
+weighted_func <- c()
+for(i in 1:5000){
+weighted_func[i] <- if(rand[i]<0.75){rnorm(1, mean =0, sd = 1)} else {rnorm(1, mean = 3, sd = 1)}
+}
+df <- data.frame(y= weighted_func)
+
+ggplot(df, aes(x=y))+
+  geom_histogram(aes(y = ..density..), color = "black", binwidth = 0.5) +  
+  geom_density(color = "red", size = 1.2) 
+
+```

@@ -1,1 +1,52 @@
+# Things To Remember
 
+## Question 1
+
+Likelihood function: summation of log f(x) where theta changes, do for each x value
+
+```{r}
+# SAMPLING BETWEEN TWO VALUES
+runif(100, min = -pi, max = pi)
+```
+
+## Question 2
+
+```{r}
+# PLOT A HISTOGRAM AND SUPERIMPOSE
+ggplot(weighted_function, aes(x=y))+
+  geom_histogram(aes(y = ..density..), color = "black") +  
+  geom_density(color = "red", size = 1.2) 
+```
+
+**Superimposing** a density function on a histogram" means to visually overlay a smooth curve representing a probability density function (PDF) on top of a bar chart (histogram) of your data
+
+## Question 3
+
+```{r}
+# LINE FROM ORIGIN TO POINTS USING GEOM_SEGMENT
+ggplot(two_dimensions, aes(x=U1, y=U2))+
+  geom_point() +
+  geom_segment(aes(x=0, y=0, xend =U1, yend=U2), color="red")
+
+# SUM EACH ROW
+x <- matrix()
+rowSums(x)
+```
+
+## Question 4
+
+For U1 and U2 from uniform distributions. Then $z_1 = \sqrt{-2logU}cos(2\pi V)$ and $z_2 = \sqrt{-2logU}sin(2\pi V)$ (note repeateable pattern of cos and sin if had U3, U4, ...).
+
+Therefore the chi distribution can be estimated using $z_1^2 + z_2^2 + ...$
+
+```{r}
+# SORT A VECTOR
+c <- 1:5
+sort(c, decreasing = TRUE)
+```
+
+## Question 5
+
+```{r}
+# TO INVERT A MATRIX USE "SOLVE"
+```

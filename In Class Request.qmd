@@ -1,0 +1,9 @@
+# In Class Example
+
+![](images/WhatsApp Image 2025-02-12 at 9.15.50 AM.jpeg)
+
+## Question 1
+
+```{r}
+#
+```

@@ -1,0 +1,28 @@
+# Question 4
+
+```{r}
+set.seed(10)
+n <- 100
+U1 <- runif(n, 0, 1)  # Uniform (0,1)
+U2 <- runif(n, 0, 1)  # Uniform (0,1)
+U3 <- runif(n, 0, 1)  # Uniform (0,1)
+U4 <- runif(n, 0, 1)  # Uniform (0,1)
+U5 <- runif(n, 0, 1)  # Uniform (0,1)
+
+Z1 <- sqrt(-2 * log(U1)) * cos(2 * pi * U2)  # Standard Normal
+Z2 <- sqrt(-2 * log(U1)) * sin(2 * pi * U2)  # Standard Normal
+Z3 <- sqrt(-2 * log(U3)) * cos(2 * pi * U4)
+Z4 <- sqrt(-2 * log(U3)) * sin(2 * pi * U4)
+Z5 <- sqrt(-2 * log(U5)) * cos(2 * pi * U1)
+
+# Chi-Squared Distribution with 5 degrees of freedom
+estimated_chi_values <- Z1^2 + Z2^2 + Z3^2 + Z4^2 + Z5^2
+theoretical_chi_values <- rchisq(100, 5, ncp =0)
+
+df1 <- data.frame(estimated = sort(estimated_chi_values, decreasing = TRUE), x = 1:100)
+df2 <- data.frame(theoretical = sort(theoretical_chi_values, decreasing = TRUE), x = 1:100)
+
+ggplot() +
+  geom_point(data = df1, aes(x=x, y = estimated),color="blue") +
+  geom_point(data = df2, aes(x=x, y=theoretical), color= "red")
+```
